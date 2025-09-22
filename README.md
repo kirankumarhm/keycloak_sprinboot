@@ -1149,6 +1149,45 @@ networks:
 # To log in, enter cn=admin,dc=example,dc=org as the username and admin_pass as the password.
 ```
 
+## 🔐 Keycloak LDAP Configuration
+
+### General Options
+- **UI Display Name**: `ldap`
+- **Vendor**: `Other`
+
+### Connection and Authentication
+- **Connection URL**: `ldap://openldap:389`
+- **Enable StartTLS**: `Off`
+- **Bind Type**: `simple`
+- **Bind DN**: `cn=admin,dc=example,dc=org`
+- **Bind Credentials**: `admin_pass`
+
+### LDAP Searching and Updating
+- **Edit Mode**: `READ_ONLY`
+- **Users DN**: `ou=people,dc=example,dc=org`
+- **Search Scope**: `Subtree`
+- **Username LDAP Attribute**: `uid`
+- **RDN LDAP Attribute**: `uid`
+- **UUID LDAP Attribute**: `entryUUID`
+- **User Object Classes**: `inetOrgPerson, organizationalPerson`
+- **User LDAP Filter**: `(objectClass=inetOrgPerson)`
+
+### Synchronization Settings
+- **Import Users**: `On`
+- **Sync Registrations**: `On`
+- **Periodic Full Sync**: `On`
+- **Full Sync Period**: `-1`
+- **Periodic Changed Users Sync**: `On`
+- **Changed Users Sync Period**: `-1`
+
+## ✅ Troubleshooting Tips
+- Ensure `Users DN` matches actual LDAP structure.
+- Use `phpLDAPadmin` to verify user entries and attributes.
+- Check Keycloak logs for detailed error messages.
+
+## 📎 References
+- [OpenLDAP Docker Setup](https://dev.to/alibenromdhan/how-to-set-up-and-configure-openldap-in-a-docker-container-with-phpldapadmin-1ido)
+
 #### References:
 https://github.com/dive-into-dev/springboot-keycloakauth  
 
